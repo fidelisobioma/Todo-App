@@ -144,13 +144,7 @@ form button {
 .delete img {
   width: 100%;
 }
-.check,
-.delete {
-  /* display: none !important; */
-}
-.active {
-  display: block !important;
-}
+
 .status {
   display: flex;
   align-items: center;

@@ -6,7 +6,7 @@ const tasks = [];
 //submit task
 form.addEventListener("submit", (event) => {
   event.preventDefault();
-  const task = { id: crypto.randomUUID(), text: "", status: "" };
+  const task = { id: crypto.randomUUID(), text: "", status: "active" };
   task["text"] = inputValue.value;
   tasks.push(task);
   dispplayData();
@@ -21,7 +21,7 @@ function dispplayData() {
               <div>
                 <div class="check${
                   task.status === "completed" ? " checked" : ""
-                }">
+                }" data-id="${task.id}">
                   <img src="images/icon-check.svg" alt="check" />
                 </div>
                 <p class="${task.status === "completed" ? "strike" : ""}" >${
@@ -45,16 +45,12 @@ function completeTask(check) {
   check.forEach((checkEl) => {
     checkEl.addEventListener("click", (event) => {
       const checkDiv = event.target.closest(".check");
-      //mark task complete
-      const parentDiv = checkDiv.parentElement;
-      const textP = parentDiv.querySelector("p").textContent;
-      let completed = tasks.find((comp) => comp.text === textP);
-      if (completed["status"] === "") {
-        completed["status"] = "completed";
-      } else {
-        completed["status"] = "";
+      const taskId = checkDiv.getAttribute("data-id");
+      let task = tasks.find((t) => t.id === taskId);
+      if (task) {
+        task.status = task.status === "completed" ? "active" : "completed";
+        dispplayData();
       }
-      dispplayData();
     });
   });
 }
