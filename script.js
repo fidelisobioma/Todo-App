@@ -1,6 +1,8 @@
 const displayTasks = document.querySelector(".task-wrapper");
 const form = document.querySelector("form");
 const inputValue = document.querySelector("input");
+const taskNum = document.querySelector(".task-num span");
+console.log(taskNum);
 const tasks = [];
 
 //submit task
@@ -38,6 +40,7 @@ function dispplayData() {
   completeTask(check);
   const deletebtn = document.querySelectorAll(".delete");
   deleteTask(deletebtn);
+  taskNum.textContent = tasks.length;
 }
 
 //logic to mark text complete
