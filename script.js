@@ -2,7 +2,8 @@ const displayTasks = document.querySelector(".task-wrapper");
 const form = document.querySelector("form");
 const inputValue = document.querySelector("input");
 const taskNum = document.querySelector(".task-num span");
-console.log(taskNum);
+const categories = document.querySelectorAll(".status p");
+console.log(categories);
 const tasks = [];
 
 //submit task
@@ -15,11 +16,38 @@ form.addEventListener("submit", (event) => {
   inputValue.value = "";
 });
 
+categories.forEach((category) => {
+  category.addEventListener("click", (event) => {
+    // Remove color from all categories
+    categories.forEach((cat) => (cat.style.color = ""));
+    // Add color to the clicked category
+    event.target.style.color = "hsl(220, 98%, 61%)";
+    let category = event.target.textContent.toLowerCase();
+    dispplayData(category);
+  });
+});
 //display task
-function dispplayData() {
-  displayTasks.innerHTML = tasks
+function dispplayData(category) {
+  if (category === undefined) {
+    categories.forEach((cat) => {
+      if (cat.textContent.toLowerCase() === "all") {
+        cat.style.color = "hsl(220, 98%, 61%)";
+      } else {
+        cat.style.color = "";
+      }
+    });
+  }
+  let filteredData =
+    category === undefined
+      ? tasks
+      : category === "all"
+      ? tasks
+      : tasks.filter((cat) => cat.status === category);
+
+  displayTasks.innerHTML = filteredData
+
     .map((task) => {
-      return `<div class="task">
+      return `<div class="task"> 
               <div>
                 <div class="check${
                   task.status === "completed" ? " checked" : ""

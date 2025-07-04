@@ -13,9 +13,10 @@ body {
   --vd-grayish: hsl(235, 19%, 35%);
 }
 .wrapper {
-  max-width: 1280px;
   position: relative;
   background-color: var(--light-grayish);
+  /* max-width: 1280px;
+  margin: auto; */
 }
 .header {
   background: linear-gradient(
@@ -43,6 +44,7 @@ body {
 .logo-mode-container h1 {
   color: hsl(0, 0%, 98%);
 }
+
 form {
   position: relative;
 }
@@ -72,11 +74,10 @@ form button {
   right: 0;
   top: 0;
   bottom: 0;
+  cursor: pointer;
 }
 .main {
-  /* border: 1px solid red; */
   position: absolute;
-  /* bottom: 135px; */
   padding: 20px;
   top: 170px;
   left: 0;
@@ -118,6 +119,7 @@ form button {
   padding: 5px;
   border-radius: 50%;
   border: 1px solid var(--light-grayish);
+  cursor: pointer;
 }
 .check img {
   width: 100%;
@@ -140,6 +142,7 @@ form button {
 .delete {
   width: 10px;
   height: 10px;
+  cursor: pointer;
 }
 .delete img {
   width: 100%;
@@ -158,6 +161,12 @@ form button {
   margin-top: 16px;
   background-color: var(--light-gray);
   border-radius: 8px;
+}
+.status p {
+  cursor: pointer;
+}
+.status p:hover {
+  color: hsl(220, 98%, 61%);
 }
 .drag-drop {
   margin-top: 30px;
