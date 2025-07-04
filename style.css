@@ -121,7 +121,8 @@ form button {
 }
 .check img {
   width: 100%;
-  visibility: hidden;
+  /* visibility: hidden; */
+  display: none;
 }
 
 .check.checked {
@@ -133,7 +134,8 @@ form button {
 }
 
 .check.checked img {
-  visibility: visible;
+  /* visibility: visible; */
+  display: block;
 }
 .delete {
   width: 10px;
@@ -141,6 +143,13 @@ form button {
 }
 .delete img {
   width: 100%;
+}
+.check,
+.delete {
+  /* display: none !important; */
+}
+.active {
+  display: block !important;
 }
 .status {
   display: flex;

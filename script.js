@@ -19,10 +19,14 @@ function dispplayData() {
     .map((task) => {
       return `<div class="task">
               <div>
-                <div class="check">
+                <div class="check${
+                  task.status === "completed" ? " checked" : ""
+                }">
                   <img src="images/icon-check.svg" alt="check" />
                 </div>
-                <p>${task.text}</p>
+                <p class="${task.status === "completed" ? "strike" : ""}" >${
+        task.text
+      }</p>
               </div>
               <div class="delete">
                 <img src="images/icon-cross.svg" alt="cross" />
@@ -36,26 +40,21 @@ function dispplayData() {
   deleteTask(deletebtn);
 }
 
-//logic to mark text
+//logic to mark text complete
 function completeTask(check) {
   check.forEach((checkEl) => {
     checkEl.addEventListener("click", (event) => {
       const checkDiv = event.target.closest(".check");
-      checkDiv.classList.toggle("checked");
       //mark task complete
       const parentDiv = checkDiv.parentElement;
       const textP = parentDiv.querySelector("p").textContent;
-      const strike = parentDiv.querySelector("p");
       let completed = tasks.find((comp) => comp.text === textP);
       if (completed["status"] === "") {
         completed["status"] = "completed";
-        strike.classList.add("strike");
       } else {
         completed["status"] = "";
-        strike.classList.remove("strike");
       }
-      // console.log(tasks);
-      // dispplayData();
+      dispplayData();
     });
   });
 }
