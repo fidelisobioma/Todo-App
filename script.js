@@ -4,6 +4,8 @@ const inputValue = document.querySelector("input");
 const taskNum = document.querySelector(".task-num span");
 const categories = document.querySelectorAll(".status p");
 const clearTask = document.querySelector(".clear-task");
+const moon = document.querySelector(".moon");
+const sun = document.querySelector(".sun");
 let tasks = [];
 
 //submit task
@@ -115,3 +117,15 @@ function clearCompletedTask() {
   });
 }
 clearCompletedTask();
+
+//logic to handle dark theme
+moon.addEventListener("click", () => {
+  moon.style.display = "none";
+  sun.style.display = "block";
+  document.body.classList.add("darkmode");
+});
+sun.addEventListener("click", () => {
+  sun.style.display = "none";
+  moon.style.display = "block";
+  document.body.classList.remove("darkmode");
+});

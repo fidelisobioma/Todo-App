@@ -4,19 +4,35 @@ body {
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
   font-size: clamp(1rem, 0.6rem + 1vw, 2rem);
-  background-color: var(--light-grayish);
-  color: var(--vd-grayish);
+  background-color: var(--vlgb);
+  color: var(--vdgb);
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 :root {
-  --light-gray: hsl(0, 0%, 98%);
-  --light-grayish: hsl(236, 33%, 92%);
-  --dark-grayish: hsl(236, 9%, 61%);
-  --vd-grayish: hsl(235, 19%, 35%);
+  --vlg: hsl(0, 0%, 98%);
+  --vlgb: hsl(236, 33%, 92%);
+  --lgb: hsl(233, 11%, 84%);
+  --dgb: hsl(236, 9%, 61%);
+  --vdgb: hsl(235, 19%, 35%);
+  /*dark mode*/
+  /* --vlg: hsl(235, 24%, 19%);
+  --vlgb: hsl(235, 21%, 11%);
+  --lgb: hsl(236, 9%, 61%);
+  --dgb: hsl(236, 9%, 61%);
+  --vdgb: hsl(236, 9%, 61%); */
+}
+.darkmode {
+  /*dark mode*/
+  --vlg: hsl(235, 24%, 19%);
+  --vlgb: hsl(235, 21%, 11%);
+  --lgb: hsl(236, 9%, 61%);
+  --dgb: hsl(236, 9%, 61%);
+  --vdgb: hsl(236, 9%, 61%);
 }
 .wrapper {
   position: relative;
-  background-color: var(--light-grayish);
+  /* background-color: var(--dgb); */
 }
 .wrapper {
   background: linear-gradient(
@@ -49,6 +65,9 @@ body {
 .mode {
   width: 15px;
 }
+.mode:hover {
+  cursor: pointer;
+}
 .mode img {
   width: 100%;
 }
@@ -56,14 +75,18 @@ form {
   position: relative;
 }
 form input {
-  background-color: var(--light-gray);
-  color: var(--dark-grayish);
+  background-color: var(--vlg);
+  color: var(--vdgb);
+  font-size: clamp(1rem, 0.6rem + 1vw, 2rem);
   padding: 16px;
   width: 100%;
   box-sizing: border-box;
   border-radius: 8px;
   border: none;
   outline: none;
+}
+form input::placeholder {
+  color: var(--lgb);
 }
 form button {
   padding: 16px;
@@ -73,7 +96,7 @@ form button {
     hsl(280, 87%, 65%)
   );
   border-radius: 8px;
-  color: var(--light-gray);
+  color: hsl(0, 0%, 98%);
   display: block;
   border: none;
   outline: none;
@@ -85,21 +108,23 @@ form button {
 }
 .main {
   max-width: 600px;
-  margin: 28px auto 0 auto; /* top, right/left, bottom */
+  margin: 16px auto 0 auto; /* top, right/left, bottom */
   padding: 0 20px;
 }
 .tasks {
   max-width: 600px;
   margin: auto;
   border-radius: 8px;
-  background-color: var(--light-gray);
+  background-color: var(--vlg);
 }
 .task {
   padding: 8px 16px;
-  border-bottom: 1px solid var(--dark-grayish);
+  border-bottom: 1px solid var(--vlgb);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  /* border: 1px solid red; */
+  /* background-color: var(--vlg); */
 }
 .task div {
   display: flex;
@@ -111,6 +136,7 @@ form button {
 }
 .strike {
   text-decoration: line-through;
+  color: var(--lgb);
 }
 .clear-num-container {
   display: flex;
@@ -122,7 +148,7 @@ form button {
   height: 10px;
   padding: 5px;
   border-radius: 50%;
-  border: 1px solid var(--light-grayish);
+  border: 1px solid hsl(233, 11%, 84%);
   cursor: pointer;
 }
 .check img {
@@ -163,14 +189,22 @@ form button {
   max-width: 600px;
   margin: auto;
   margin-top: 16px;
-  background-color: var(--light-gray);
+  background-color: var(--vlg);
   border-radius: 8px;
 }
-.status p {
-  cursor: pointer;
-}
 .status p:hover {
+  cursor: pointer;
   color: hsl(220, 98%, 61%);
+}
+.clear-task:hover {
+  cursor: pointer;
+  color: hsl(220, 98%, 61%);
+}
+.sun {
+  display: none;
+}
+.moon {
+  display: block;
 }
 .drag-drop {
   margin-top: 30px;
@@ -184,6 +218,9 @@ form button {
     height: 16vh;
     max-height: 300px;
   }
+  .main {
+    /* margin-top: 8px; */
+  }
 }
 @media screen and (min-width: 1024px) {
   .wrapper {
@@ -191,8 +228,5 @@ form button {
     min-height: 230px;
     height: 35vh;
     max-height: 300px;
-  }
-  .main {
-    /* margin-top: 100px; */
   }
 }
