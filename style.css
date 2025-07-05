@@ -2,13 +2,12 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* font-size: clamp(1rem, 0.6rem + 1vw, 2rem); */
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(1rem, 0.6rem + 1vw, 2rem);
   background-color: var(--light-grayish);
-}
-* {
-  font-size: clamp(0.9rem, 0.5rem + 1vw, 1rem);
   color: var(--vd-grayish);
 }
+
 :root {
   --light-gray: hsl(0, 0%, 98%);
   --light-grayish: hsl(236, 33%, 92%);
@@ -194,6 +193,6 @@ form button {
     max-height: 300px;
   }
   .main {
-    margin-top: 40px;
+    /* margin-top: 100px; */
   }
 }

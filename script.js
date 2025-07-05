@@ -3,8 +3,8 @@ const form = document.querySelector("form");
 const inputValue = document.querySelector("input");
 const taskNum = document.querySelector(".task-num span");
 const categories = document.querySelectorAll(".status p");
-console.log(categories);
-const tasks = [];
+const clearTask = document.querySelector(".clear-task");
+let tasks = [];
 
 //submit task
 form.addEventListener("submit", (event) => {
@@ -26,6 +26,7 @@ categories.forEach((category) => {
     dispplayData(category);
   });
 });
+
 //display task
 function dispplayData(category) {
   if (category === undefined) {
@@ -45,7 +46,6 @@ function dispplayData(category) {
       : tasks.filter((cat) => cat.status === category);
 
   displayTasks.innerHTML = filteredData
-
     .map((task) => {
       return `<div class="task"> 
               <div>
@@ -68,6 +68,7 @@ function dispplayData(category) {
   completeTask(check);
   const deletebtn = document.querySelectorAll(".delete");
   deleteTask(deletebtn);
+  // clearCompletedTask(filteredData);
   taskNum.textContent = tasks.length;
 }
 
@@ -104,4 +105,13 @@ function deleteTask(deletebtn) {
   });
 }
 
-console.log(tasks);
+//Clear completed task
+function clearCompletedTask() {
+  clearTask.addEventListener("click", () => {
+    console.log("click");
+    let completedTask = tasks.filter((task) => task.status !== "completed");
+    tasks = completedTask;
+    dispplayData();
+  });
+}
+clearCompletedTask();
